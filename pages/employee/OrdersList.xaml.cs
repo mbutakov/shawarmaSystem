@@ -20,11 +20,18 @@ namespace WpfApp2.pages.employee
     /// </summary>
     public partial class OrdersList : Window
     {
+
+        public static OrdersList Instance; 
         public OrdersList()
         {
             InitializeComponent();
-            int orderCount = 0;
+            Instance = this;
+        }
 
+
+        public void updateList()
+        {
+            ListWaiting.Children.Clear();
             var GlobalOrder = MainWindow.connection.OrderCompound.Join(MainWindow.connection.Order, u => u.Order, c => c.ID, (u, c) => new
             {
                 DishId = u.Dish,
@@ -44,18 +51,13 @@ namespace WpfApp2.pages.employee
                     button.Tag = go.OrderId;
                     ListWaiting.Children.Add(button);
                 }
-               // else if (go.Status.Equals("В работе"))
+                // else if (go.Status.Equals("В работе"))
                 //{
-                  //  ListWork.Children.Add(button);
+                //  ListWork.Children.Add(button);
                 //}
             }
-
-            foreach (Order o in MainWindow.connection.Order)
-            {
-                orderCount++;
-            }
-            counter.Content = orderCount + " ";
         }
+
 
         public void acceptToWork(object sender, EventArgs e)
         {
@@ -70,6 +72,11 @@ namespace WpfApp2.pages.employee
             orderF.Status = orderC.Status = "В работе";
             MainWindow.connection.SaveChanges();
 
+        }
+
+        public void timerTick10sec()
+        {
+            updateList();
         }
 
         public void workCancel(object sender, EventArgs e)

@@ -13,9 +13,9 @@
 
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel x:Name="ListWaiting"/>
-        <StackPanel Grid.Column="1" x:Name="ListWork"/>
-        <Label Content="Label" x:Name="counter" HorizontalAlignment="Left" Margin="382,0,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <StackPanel x:Name="ListWaiting" Margin="10"/>
+        <StackPanel Grid.Column="1" x:Name="ListWork" Margin="10">
+        </StackPanel>
 
 
     </Grid>
