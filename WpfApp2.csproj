@@ -73,6 +73,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="EmployeeEx.cs" />
+    <Compile Include="fastfoodEntitiesContext.cs" />
+    <Compile Include="pages\dishEditor\dishEditorW.xaml.cs">
+      <DependentUpon>dishEditorW.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\employee\Orders.xaml.cs">
       <DependentUpon>Orders.xaml</DependentUpon>
     </Compile>
@@ -140,6 +144,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="pages\dishEditor\dishEditorW.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="pages\employee\Orders.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

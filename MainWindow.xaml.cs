@@ -41,7 +41,10 @@ namespace WpfApp2
 
         private void timerTick(object sender, EventArgs e)
         {
-            OrdersList.Instance.timerTick10sec();
+            if(OrdersList.Instance != null)
+            {
+                OrdersList.Instance.timerTick10sec();
+            }
         }
 
 

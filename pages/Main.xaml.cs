@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp2.database;
+using WpfApp2.pages.dishEditor;
+
 namespace WpfApp2.pages
 {
     /// <summary>
@@ -39,15 +41,35 @@ namespace WpfApp2.pages
         {
             Label label = new Label();
             label.Content = "Выберите сотрудника:";
+            lbEmp.DisplayMemberPath = "Surname";
             refreshListUser();
             containerAdmin.Children.Add(label);
             containerAdmin.Children.Add(lbEmp);
-            Button buttonDelete = new Button();
-            buttonDelete.Click += buttonRemoveUserByAdmin;
-            buttonDelete.Content = "Удалить сотрудника";
-            lbEmp.DisplayMemberPath = "Surname";
+            Button buttonDelete = createButton("Удалить сотрудника",buttonRemoveUserByAdmin);
+            Button buttonDishEditor = createButton("Добавление блюда", button_DishEditor);
             containerAdmin.Children.Add(buttonDelete);
+            containerAdmin.Children.Add(buttonDishEditor);
         }
+
+
+
+        public void button_DishEditor(Object sender, EventArgs e)
+        {
+            new dishEditorW().Show();
+        }
+
+
+            public static Button createButton(string text,RoutedEventHandler r)
+        {
+            Button btn = new Button();
+            btn.Content = text;
+            if(r!= null)
+            {
+                btn.Click += r;
+            }
+            return btn;
+        }
+
             public void refreshListUser()
         {
             lbEmp.Items.Clear();

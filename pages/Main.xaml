@@ -9,7 +9,7 @@
       Title="Main">
 
     <Grid>
-        <Label Content="Name: =" HorizontalAlignment="Center" FontSize="18" Margin="0,100,0,0" x:Name="nameTitle" VerticalAlignment="Top" Width="284" Height="84"/>
+        <Label Content="Name: =" HorizontalAlignment="Center" FontSize="18" Margin="0,300,0,0" x:Name="nameTitle" VerticalAlignment="Top" Width="284" Height="84"/>
         <StackPanel x:Name="containerAdmin"/>
 
     </Grid>
