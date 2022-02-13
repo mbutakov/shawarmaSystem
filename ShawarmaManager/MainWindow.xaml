@@ -1,0 +1,14 @@
+﻿<Window x:Class="ShawarmaManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShawarmaManager"
+        mc:Ignorable="d"
+        Title="Login Page" Height="500" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#FF811CEC">
+    <Grid>
+        <Frame NavigationUIVisibility="Hidden" Content="" x:Name="FrameMain"/>
+        <Button Name="zzz" Content="Button" HorizontalAlignment="Left" Margin="212,242,0,0" VerticalAlignment="Top" Click="zzz_Click" Cursor="Hand"/>
+    </Grid>
+</Window>

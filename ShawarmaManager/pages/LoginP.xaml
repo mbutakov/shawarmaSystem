@@ -1,0 +1,19 @@
+﻿<Page x:Class="ShawarmaManager.pages.LoginP"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ShawarmaManager.pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="400"
+      Title="LoginP">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <PasswordBox HorizontalAlignment ="Center" Margin="0,0,0,220" Width="130" x:Name="passBox" Height="30" VerticalAlignment="Bottom"/>
+        <TextBox HorizontalAlignment="Center" Margin="0,0,0,278" TextWrapping="Wrap" Text="Login" Width="130" x:Name="loginBox" TextChanged="loginBox_TextChanged" Height="30" VerticalAlignment="Bottom"/>
+        <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}" Content="Auth" HorizontalAlignment="Center" Margin="0,0,0,171" Width="100" Click="Button_Click_1" Cursor="Hand" Height="32" VerticalAlignment="Bottom"/>
+    </Grid>
+</Page>

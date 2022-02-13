@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="71552ccff77f4d3f93b8dead40ea4f8a" Name="Diagram1">
+        <EntityTypeShape EntityType="fastfoodDB.Client" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="fastfoodDB.Dish" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="fastfoodDB.DishCompound" Width="1.5" PointX="10.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="fastfoodDB.DishStatus" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="fastfoodDB.Employee" Width="1.5" PointX="0.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="fastfoodDB.Image" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="fastfoodDB.Ingredient" Width="1.5" PointX="8" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="fastfoodDB.Order" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="fastfoodDB.OrderCompound" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="fastfoodDB.OrderStatus" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="fastfoodDB.Unit" Width="1.5" PointX="5.75" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="fastfoodDB.Order_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="fastfoodDB.DishCompound_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="fastfoodDB.OrderCompound_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="fastfoodDB.DishCompound_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="fastfoodDB.OrderCompound_fk2" ManuallyRouted="false" />
+        <AssociationConnector Association="fastfoodDB.Order_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="fastfoodDB.Ingredient_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="fastfoodDB.Order_fk2" ManuallyRouted="false" />
+        <AssociationConnector Association="fastfoodDB.OrderCompound_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="fastfoodDB.DishImage" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="fastfoodDB.sysdiagrams" Width="1.5" PointX="7.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

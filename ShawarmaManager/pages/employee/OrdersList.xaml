@@ -1,0 +1,22 @@
+﻿<Window x:Class="ShawarmaManager.pages.employee.OrdersList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShawarmaManager.pages.employee"
+        mc:Ignorable="d"
+        Title="OrdersList" Height="450" Width="800" Background="#FF8C8C8C">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="ListWaiting" Margin="10"/>
+        <StackPanel Grid.Column="1" x:Name="ListWork" Margin="10">
+        </StackPanel>
+
+
+    </Grid>
+</Window>
