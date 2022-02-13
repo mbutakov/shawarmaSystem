@@ -72,6 +72,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="database\sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeEx.cs" />
     <Compile Include="fastfoodEntitiesContext.cs" />
     <Compile Include="pages\dishEditor\dishEditorW.xaml.cs">
@@ -206,7 +209,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Images\" />
     <Folder Include="pages\admin\" />
+    <Folder Include="pages\dishList\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="database\Model1.Context.tt">
@@ -219,6 +224,13 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="pages\dishEditor\capusta.png" />
+    <Resource Include="pages\dishEditor\a.png" />
+    <Resource Include="pages\dishEditor\tomato.png" />
+    <Content Include="pages\dishEditor\chicken.png" />
+    <Resource Include="pages\dishEditor\cucumber.png" />
+    <Resource Include="pages\dishEditor\kisspng-plum-tomato-vegetable-bush-tomato-ketchup-5c81f5326fd890.4147801815520207864581.jpg" />
+    <Content Include="pages\dishEditor\tomatoes.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

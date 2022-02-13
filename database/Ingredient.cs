@@ -23,6 +23,7 @@ namespace WpfApp2.database
         public int Articule { get; set; }
         public string Name { get; set; }
         public string Unit { get; set; }
+        public string Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DishCompound> DishCompound { get; set; }

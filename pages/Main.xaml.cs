@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,7 +25,7 @@ namespace WpfApp2.pages
     {
         private static Employee thisUser;
         static ListBox lbEmp = new ListBox();
-        
+
         public Main(Employee e)
         {
             InitializeComponent();
@@ -46,14 +47,24 @@ namespace WpfApp2.pages
             containerAdmin.Children.Add(label);
             containerAdmin.Children.Add(lbEmp);
             Button buttonDelete = createButton("Удалить сотрудника",buttonRemoveUserByAdmin);
-            Button buttonDishEditor = createButton("Добавление блюда", button_DishEditor);
+            Button buttonDishEditor = createButton("Добавление блюда", button_DishAdder);
+            Button buttonDishList = createButton("Список/редакция блюда", button_DishList);
             containerAdmin.Children.Add(buttonDelete);
             containerAdmin.Children.Add(buttonDishEditor);
         }
 
 
+        public static void button_DishList2(Object sender, EventArgs e)
+        {
+            
+        }
 
-        public void button_DishEditor(Object sender, EventArgs e)
+        public void button_DishList(Object sender, EventArgs e)
+        {
+            new dishEditorW().Show();
+
+        }
+        public void button_DishAdder(Object sender, EventArgs e)
         {
             new dishEditorW().Show();
         }

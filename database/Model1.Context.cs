@@ -36,5 +36,6 @@ namespace WpfApp2.database
         public virtual DbSet<OrderCompound> OrderCompound { get; set; }
         public virtual DbSet<OrderStatus> OrderStatus { get; set; }
         public virtual DbSet<Unit> Unit { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

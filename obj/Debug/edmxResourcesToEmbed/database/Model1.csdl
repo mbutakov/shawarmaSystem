@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="fastfoodDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Phone" />
+    </Key>
+    <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="Self.Order_fk0" FromRole="Client" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Dish">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <NavigationProperty Name="DishCompound" Relationship="Self.DishCompound_fk0" FromRole="Dish" ToRole="DishCompound" />
+    <NavigationProperty Name="OrderCompound" Relationship="Self.OrderCompound_fk1" FromRole="Dish" ToRole="OrderCompound" />
+    <NavigationProperty Name="Image" Relationship="Self.DishImage" FromRole="Dish" ToRole="Image" />
+  </EntityType>
+  <EntityType Name="DishCompound">
+    <Key>
+      <PropertyRef Name="Dish" />
+      <PropertyRef Name="Ingredient" />
+    </Key>
+    <Property Name="Dish" Type="Int32" Nullable="false" />
+    <Property Name="Ingredient" Type="Int32" Nullable="false" />
+    <Property Name="Volume" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Dish1" Relationship="Self.DishCompound_fk0" FromRole="DishCompound" ToRole="Dish" />
+    <NavigationProperty Name="Ingredient1" Relationship="Self.DishCompound_fk1" FromRole="DishCompound" ToRole="Ingredient" />
+  </EntityType>
+  <EntityType Name="DishStatus">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="OrderCompound" Relationship="Self.OrderCompound_fk2" FromRole="DishStatus" ToRole="OrderCompound" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Phone" />
+    </Key>
+    <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="18" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="Self.Order_fk1" FromRole="Employee" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Caption" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="URL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Dish" Relationship="Self.DishImage" FromRole="Image" ToRole="Dish" />
+  </EntityType>
+  <EntityType Name="Ingredient">
+    <Key>
+      <PropertyRef Name="Articule" />
+    </Key>
+    <Property Name="Articule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Unit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="DishCompound" Relationship="Self.DishCompound_fk1" FromRole="Ingredient" ToRole="DishCompound" />
+    <NavigationProperty Name="Unit1" Relationship="Self.Ingredient_fk0" FromRole="Ingredient" ToRole="Unit" />
+    <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Client" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Employee" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Client1" Relationship="Self.Order_fk0" FromRole="Order" ToRole="Client" />
+    <NavigationProperty Name="Employee1" Relationship="Self.Order_fk1" FromRole="Order" ToRole="Employee" />
+    <NavigationProperty Name="OrderStatus" Relationship="Self.Order_fk2" FromRole="Order" ToRole="OrderStatus" />
+    <NavigationProperty Name="OrderCompound" Relationship="Self.OrderCompound_fk0" FromRole="Order" ToRole="OrderCompound" />
+  </EntityType>
+  <EntityType Name="OrderCompound">
+    <Key>
+      <PropertyRef Name="Order" />
+      <PropertyRef Name="Dish" />
+    </Key>
+    <Property Name="Order" Type="Int32" Nullable="false" />
+    <Property Name="Dish" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Dish1" Relationship="Self.OrderCompound_fk1" FromRole="OrderCompound" ToRole="Dish" />
+    <NavigationProperty Name="DishStatus" Relationship="Self.OrderCompound_fk2" FromRole="OrderCompound" ToRole="DishStatus" />
+    <NavigationProperty Name="Order1" Relationship="Self.OrderCompound_fk0" FromRole="OrderCompound" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="OrderStatus">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="Self.Order_fk2" FromRole="OrderStatus" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Ingredient" Relationship="Self.Ingredient_fk0" FromRole="Unit" ToRole="Ingredient" />
+  </EntityType>
+  <Association Name="Order_fk0">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Phone" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DishCompound_fk0">
+    <End Role="Dish" Type="Self.Dish" Multiplicity="1" />
+    <End Role="DishCompound" Type="Self.DishCompound" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dish">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DishCompound">
+        <PropertyRef Name="Dish" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderCompound_fk1">
+    <End Role="Dish" Type="Self.Dish" Multiplicity="1" />
+    <End Role="OrderCompound" Type="Self.OrderCompound" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dish">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderCompound">
+        <PropertyRef Name="Dish" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DishCompound_fk1">
+    <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="1" />
+    <End Role="DishCompound" Type="Self.DishCompound" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingredient">
+        <PropertyRef Name="Articule" />
+      </Principal>
+      <Dependent Role="DishCompound">
+        <PropertyRef Name="Ingredient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderCompound_fk2">
+    <End Role="DishStatus" Type="Self.DishStatus" Multiplicity="1" />
+    <End Role="OrderCompound" Type="Self.OrderCompound" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DishStatus">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="OrderCompound">
+        <PropertyRef Name="Status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Order_fk1">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Phone" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Ingredient_fk0">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+    <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Ingredient">
+        <PropertyRef Name="Unit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Order_fk2">
+    <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderStatus">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderCompound_fk0">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderCompound" Type="Self.OrderCompound" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderCompound">
+        <PropertyRef Name="Order" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DishImage">
+    <End Role="Dish" Type="Self.Dish" Multiplicity="*" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="fastfoodEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Client" EntityType="Self.Client" />
+    <EntitySet Name="Dish" EntityType="Self.Dish" />
+    <EntitySet Name="DishCompound" EntityType="Self.DishCompound" />
+    <EntitySet Name="DishStatus" EntityType="Self.DishStatus" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" />
+    <EntitySet Name="Image" EntityType="Self.Image" />
+    <EntitySet Name="Ingredient" EntityType="Self.Ingredient" />
+    <EntitySet Name="Order" EntityType="Self.Order" />
+    <EntitySet Name="OrderCompound" EntityType="Self.OrderCompound" />
+    <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" />
+    <EntitySet Name="Unit" EntityType="Self.Unit" />
+    <AssociationSet Name="Order_fk0" Association="Self.Order_fk0">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="DishCompound_fk0" Association="Self.DishCompound_fk0">
+      <End Role="Dish" EntitySet="Dish" />
+      <End Role="DishCompound" EntitySet="DishCompound" />
+    </AssociationSet>
+    <AssociationSet Name="OrderCompound_fk1" Association="Self.OrderCompound_fk1">
+      <End Role="Dish" EntitySet="Dish" />
+      <End Role="OrderCompound" EntitySet="OrderCompound" />
+    </AssociationSet>
+    <AssociationSet Name="DishCompound_fk1" Association="Self.DishCompound_fk1">
+      <End Role="Ingredient" EntitySet="Ingredient" />
+      <End Role="DishCompound" EntitySet="DishCompound" />
+    </AssociationSet>
+    <AssociationSet Name="OrderCompound_fk2" Association="Self.OrderCompound_fk2">
+      <End Role="DishStatus" EntitySet="DishStatus" />
+      <End Role="OrderCompound" EntitySet="OrderCompound" />
+    </AssociationSet>
+    <AssociationSet Name="Order_fk1" Association="Self.Order_fk1">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="Ingredient_fk0" Association="Self.Ingredient_fk0">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="Ingredient" EntitySet="Ingredient" />
+    </AssociationSet>
+    <AssociationSet Name="Order_fk2" Association="Self.Order_fk2">
+      <End Role="OrderStatus" EntitySet="OrderStatus" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="OrderCompound_fk0" Association="Self.OrderCompound_fk0">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderCompound" EntitySet="OrderCompound" />
+    </AssociationSet>
+    <AssociationSet Name="DishImage" Association="Self.DishImage">
+      <End Role="Dish" EntitySet="Dish" />
+      <End Role="Image" EntitySet="Image" />
+    </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="fastfoodDB.sysdiagrams" />
+  </EntityContainer>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+</Schema>

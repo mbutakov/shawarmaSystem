@@ -18,14 +18,13 @@
         <Button x:Name="buttonAdd" Content="Добавить" HorizontalAlignment="Center" Margin="0,0,0,970" VerticalAlignment="Bottom" Height="80" Width="276" Click="Button_Click" Cursor="Hand"/>
         <TextBox x:Name="nameDish" Style="{StaticResource MaterialDesignFilledTextBox}" HorizontalAlignment="Stretch" Margin="0,152,0,867" TextWrapping="Wrap" Text="Название блюда" Width="276" Cursor="IBeam" VerticalAlignment="Stretch" FontSize="20" CharacterCasing="Normal" FontWeight="Normal" FontFamily="Franklin Gothic Medium" TextAlignment="Center" Foreground="White"/>
         <TextBox x:Name="priceDish" Style="{StaticResource MaterialDesignFilledTextBox}" Margin="54,238,54,781" TextWrapping="Wrap" Text="Цена" Width="276" Cursor="IBeam" FontSize="20" CharacterCasing="Normal" FontWeight="Normal" FontFamily="Franklin Gothic Medium" TextAlignment="Center" Foreground="White"/>
-        <ListView x:Name="ingridientListAdded" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,388,0,0"  ItemsSource="{DynamicResource ResourceKey=Ingridient}" >
+        <ListView x:Name="ingridientListAdded" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,388,0,0" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Item1.Name}" Width="auto">Название</GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Item2}" Width="auto">Кол-во</GridViewColumn>
                 </GridView>
             </ListView.View>
-
         </ListView>
 
         <Grid Margin="35px" x:Name="gridIngridient" Grid.Column="1">
@@ -39,7 +38,11 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <ScrollViewer Grid.ColumnSpan="3" Grid.RowSpan="3" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"/>
+       
+            <ScrollViewer Grid.ColumnSpan="3" Grid.RowSpan="3" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+
+
+            </ScrollViewer>
         </Grid>
 
         <Button  x:Name="closeB" Content="X" Click="closeB_Click" Cursor="Hand" Margin="1496,0,0,1048" HorizontalAlignment="Left" Width="40" Grid.Column="1"/>

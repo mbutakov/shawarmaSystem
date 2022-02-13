@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -37,8 +42,11 @@ namespace WpfApp2
             mw = this;
             InitializeComponent();
             FrameMain.Navigate(lp);
+            Closing += this.OnWindowClosing;
         }
-
+        public void OnWindowClosing(object sender, CancelEventArgs e)
+        {
+        }
         private void timerTick(object sender, EventArgs e)
         {
             if(OrdersList.Instance != null)
@@ -47,6 +55,9 @@ namespace WpfApp2
             }
         }
 
+        private void zzz_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }

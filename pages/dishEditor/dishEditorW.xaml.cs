@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfApp2.database;
+using Image = System.Windows.Controls.Image;
 
 namespace WpfApp2.pages.dishEditor
 {
@@ -70,16 +71,27 @@ namespace WpfApp2.pages.dishEditor
                 {
                     row++;
                 }
+                StackPanel stackPanel = new StackPanel();
                 Button btn = new Button();
-                Grid.SetColumn(btn, column);
-                Grid.SetRow(btn, row);
+                Image img = new Image();
+                img.Height = 100;
+                img.Source = new BitmapImage(new Uri("/pages/dishEditor/" +listIngridientLoaded[i].Image + ".png", UriKind.Relative));
                 btn.Height = Double.NaN;
                 btn.Click += addToListIngridient;
                 btn.Tag = listIngridientLoaded[i];
                 btn.Content = listIngridientLoaded[i].Name;
                 btn.Style = (Style)FindResource("MaterialDesignFlatDarkBgButton");
-                gridIngridient.Children.Add(btn);
+                stackPanel.Children.Add(img);
+                stackPanel.Children.Add(btn);
+                stackPanel.VerticalAlignment = VerticalAlignment.Bottom;
+                btn.VerticalAlignment = VerticalAlignment.Bottom;
+                
+                Grid.SetColumn(stackPanel, column);
+                Grid.SetRow(stackPanel, row);
+                gridIngridient.Children.Add(stackPanel);
+               
             }
+            
         }
 
         public void addToListIngridient(object sender, EventArgs e)
