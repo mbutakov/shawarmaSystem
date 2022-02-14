@@ -5,6 +5,10 @@ import (
 	"encoding/json"
 	"fmt"
 	_ "github.com/denisenkom/go-mssqldb"
+<<<<<<< HEAD
+=======
+	mssql "github.com/denisenkom/go-mssqldb"
+>>>>>>> 207a9039468d2e3d4af12c6ef7a0713a537c814e
 	"github.com/gin-gonic/gin"
 	"net/url"
 	"time"
@@ -28,6 +32,7 @@ func acceptOrder(c *gin.Context) {
 	if err := c.BindJSON(&dish); err != nil {
 		return
 	}
+<<<<<<< HEAD
 	fmt.Fprint(c.Writer, dish)
 	query := url.Values{}
 	query.Add("database", "fastfood")
@@ -35,21 +40,42 @@ func acceptOrder(c *gin.Context) {
 		Scheme:   "sqlserver",
 		User:     url.UserPassword("fastFood", "fastFood"),
 		Host:     fmt.Sprintf("%s:%d", "localhost", 1433),
+=======
+
+	query := url.Values{}
+	query.Add("database", "fastfood")
+	u := &url.URL{
+		Scheme: "sqlserver",
+		User:   url.UserPassword("fastFood", "fastFood"),
+		Host:   fmt.Sprintf("%s:%d", "localhost", 1433),
+		// Path:  instance, // if connecting to an instance instead of a port
+>>>>>>> 207a9039468d2e3d4af12c6ef7a0713a537c814e
 		RawQuery: query.Encode(),
 	}
 	db, err := sql.Open("sqlserver", u.String())
 	if err != nil {
 		panic(err)
 	}
+<<<<<<< HEAD
 	var datetime = time.Now()
 	var o = Order{}
 	o.Client = "9025927723"
 	o.Employee = "9025927723"
 	o.Date = datetime.Format("2006-1-2") + " " + datetime.Format("15:04:05.999")
+=======
+	defer db.Close()
+	var datetime = time.Now()
+	dt := datetime.Format(time.RFC3339)
+	var o = Order{}
+	o.Client = "9025927723"
+	o.Employee = "9025927723"
+	o.Date = dt
+>>>>>>> 207a9039468d2e3d4af12c6ef7a0713a537c814e
 	o.Status = "В ожиданий"
 	for _, p := range dish {
 		fmt.Println("Вы заказали:"+p.Name+" Цена: ", p.Price)
 	}
+<<<<<<< HEAD
 	id := 0
 	err = db.QueryRow(fmt.Sprintf("INSERT INTO [Order](Client,Employee,[Date],[Status]) OUTPUT Inserted.ID VALUES ('%s','%s','','%s')", o.Client, o.Employee, o.Status)).Scan(&id)
 	if err != nil {
@@ -75,6 +101,11 @@ func acceptOrder(c *gin.Context) {
 
 	fmt.Println(idTwo)
 	defer db.Close()
+=======
+	//_, err = db.Exec("INSERT into Order2(Name) VALUES ('')")
+	fmt.Fprint(c.Writer, dish)
+
+>>>>>>> 207a9039468d2e3d4af12c6ef7a0713a537c814e
 }
 
 func getListDishesToWork(c *gin.Context) {
@@ -115,10 +146,16 @@ func getListDishesToWork(c *gin.Context) {
 }
 
 type Dish struct {
+<<<<<<< HEAD
 	Id    uint16  `json:"Id"`
 	Name  string  `json:"Name"`
 	Price float32 `json:"Price"`
 	Count uint16  `json:"Count"`
+=======
+	Id    uint16        `json:"Id"`
+	Name  mssql.VarChar `json:"Name"`
+	Price float32       `json:"Price"`
+>>>>>>> 207a9039468d2e3d4af12c6ef7a0713a537c814e
 }
 type Order struct {
 	Id       uint16
