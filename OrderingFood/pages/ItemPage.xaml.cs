@@ -28,10 +28,9 @@ namespace OrderingFood.pages
     {
         public static List<Dish> dishList = new List<Dish>();
         public static List<Dish> prevDishList = new List<Dish>();
-        public static List<Dish> dishListToOrder = new List<Dish>();
         public static List<Grid> gridList = new List<Grid>();
         System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-   
+        public static List<Tuple<Dish, int>> dishListToOrder = new List<Tuple<Dish, int>>();
 
         public ItemPage()
         {
@@ -136,6 +135,8 @@ namespace OrderingFood.pages
 
             }
 
+            index = 0;
+
 
 
             for (int i = 0; i < gridList.Count; i++)
@@ -158,11 +159,36 @@ namespace OrderingFood.pages
         public void addToListDishHandler(object sender, EventArgs e)
         {
             Dish dish = (Dish)((Control)sender).Tag;
-            dishListToOrder.Add(dish);
+            var item = new Tuple<Dish, int>(dish, 1);
+            int index = 0;
+            bool find = false;
+            foreach (var di in dishListToOrder)
+            {
+                if (di.Item1.Name == item.Item1.Name)
+                {
+                    var newTuple = new Tuple<Dish, int>(item.Item1, di.Item2 + 1);
+                    newTuple.Item1.Price += 100;
+                    dishListToOrder.RemoveAt(index);
+                    dishListToOrder.Insert(index, newTuple);
+                    find = true;
+                    break;
+                }
+                index++;
+            }
+
+            if (find)
+            {
+          
+            }
+            else
+            {
+                dishListToOrder.Add(item);
+            }
+
             refreshListOrder();
 
         }
-
+        
         static bool Divisibility(int n)
         {
             if (n % 3 == 0)
@@ -181,7 +207,7 @@ namespace OrderingFood.pages
         private async void ButtonOrder_Click(object sender, RoutedEventArgs e)
         {
             await apiOrderSendPosTask();
-            refreshList();
+            refreshListOrder();
             dishListToOrder.Clear();
             DishListAdded.Items.Clear();
 
@@ -190,34 +216,27 @@ namespace OrderingFood.pages
 
         private async static Task apiOrderSendPosTask()
         {
-            var stringPayload = JsonConvert.SerializeObject(dishListToOrder);
+            List<DishEx> dishListToOrderJsonOptimization = new List<DishEx>();
+            foreach (var dish in dishListToOrder)
+            {
+                DishEx de = new DishEx();
+                de.Count = dish.Item2;
+                de.Name = dish.Item1.Name;
+                de.Id = dish.Item1.Id;
+                de.Price = dish.Item1.Price;
+                dishListToOrderJsonOptimization.Add(de);
+            }
+             var stringPayload = JsonConvert.SerializeObject(dishListToOrderJsonOptimization);
             // Wrap our JSON inside a StringContent which then can be used by the HttpClient class
             var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
-
             var httpClient = new HttpClient();
-
             // Do the actual request and await the response
             var httpResponse = await httpClient.PostAsync("http://localhost:8080/acceptOrder", httpContent);
-
             // If the response contains content we want to read it!
             if (httpResponse.Content != null)
             {
                 var responseContent = await httpResponse.Content.ReadAsStringAsync();
                 MessageBox.Show("Заказ успешно оформлен");
-            }
-        }
-
-        private static HttpClient _httpClient = new HttpClient();
-
-        public bool POSTData(object json, string url)
-        {
-            using (var content = new StringContent(JsonConvert.SerializeObject(json), System.Text.Encoding.UTF8, "application/json"))
-            {
-                HttpResponseMessage result = _httpClient.PostAsync(url, content).Result;
-                if (result.StatusCode == System.Net.HttpStatusCode.Created)
-                    return true;
-                string returnValue = result.Content.ReadAsStringAsync().Result;
-                throw new Exception($"Failed to POST data: ({result.StatusCode}): {returnValue}");
             }
         }
     }

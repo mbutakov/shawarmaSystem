@@ -51,6 +51,14 @@ namespace OrderingFood.utils
         public float Price { get; set; }
     }
 
+    public class DishEx
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public float Price { get; set; }
+        public int Count { get; set; }
+    }
+
     public static class HttpClientExtensions
     {
         private static readonly JsonSerializer JsonSerializer = new JsonSerializer();

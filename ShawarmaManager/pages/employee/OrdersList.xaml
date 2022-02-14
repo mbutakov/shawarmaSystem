@@ -7,15 +7,21 @@
         xmlns:local="clr-namespace:ShawarmaManager.pages.employee"
         mc:Ignorable="d"
         Title="OrdersList" Height="450" Width="800" Background="#FF8C8C8C">
-    <Grid>
+    <Grid Name="gridListOrders">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+         
+
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-
+            <ColumnDefinition/>
+            <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel x:Name="ListWaiting" Margin="10"/>
-        <StackPanel Grid.Column="1" x:Name="ListWork" Margin="10">
-        </StackPanel>
+     
 
 
     </Grid>

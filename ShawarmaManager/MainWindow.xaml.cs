@@ -37,7 +37,7 @@ namespace ShawarmaManager
         public MainWindow()
         {
             timer.Tick += new EventHandler(timerTick);
-            timer.Interval = new TimeSpan(0, 0, 10);
+            timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
             mw = this;
             InitializeComponent();
