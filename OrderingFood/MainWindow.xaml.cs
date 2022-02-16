@@ -30,7 +30,7 @@ namespace OrderingFood
             mainWindow.Visibility = Visibility.Collapsed;
             mainWindow.ResizeMode = ResizeMode.NoResize;
             mainWindow.WindowState = WindowState.Maximized;
-            mainWindow.Topmost = true;
+            //mainWindow.Topmost = true;
             mainWindow.Visibility = Visibility.Visible;
 
         }

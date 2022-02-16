@@ -9,6 +9,5 @@
         Title="Login Page" Height="500" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#FF811CEC">
     <Grid>
         <Frame NavigationUIVisibility="Hidden" Content="" x:Name="FrameMain"/>
-        <Button Name="zzz" Content="Button" HorizontalAlignment="Left" Margin="212,242,0,0" VerticalAlignment="Top" Click="zzz_Click" Cursor="Hand"/>
     </Grid>
 </Window>

@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:ShawarmaManager.pages.dishEditor"
         mc:Ignorable="d"
         x:Name="dishEditorWindow"
-        WindowStyle="None" ResizeMode="NoResize"
+       WindowStyle="None"
         Title="dishEditorW" Height="1080" Width="1920" Background="#FF3A0842">
 
     <Grid>

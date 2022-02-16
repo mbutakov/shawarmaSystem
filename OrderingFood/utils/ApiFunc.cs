@@ -57,6 +57,7 @@ namespace OrderingFood.utils
         public string Name { get; set; }
         public float Price { get; set; }
         public int Count { get; set; }
+        public DateTime OrderDate { get; set; }
     }
 
     public static class HttpClientExtensions

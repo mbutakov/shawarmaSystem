@@ -32,10 +32,10 @@ namespace ShawarmaManager.pages.dishEditor
             Instance = this;
             InitializeComponent();
             dishEditorWindow.Visibility = Visibility.Collapsed;
-            dishEditorWindow.WindowStyle = WindowStyle.None;
+           // dishEditorWindow.WindowStyle = WindowStyle.None;
             dishEditorWindow.ResizeMode = ResizeMode.NoResize;
             dishEditorWindow.WindowState = WindowState.Maximized;
-            dishEditorWindow.Topmost = true;
+           // dishEditorWindow.Topmost = true;
             dishEditorWindow.Visibility = Visibility.Visible;
             loadListIngridient();
         }
@@ -174,7 +174,6 @@ namespace ShawarmaManager.pages.dishEditor
                 if (z > 0)
                 {
                     MessageBox.Show("Успешно добавлено");
-                    this.Close();
                 }
                 else
                 {

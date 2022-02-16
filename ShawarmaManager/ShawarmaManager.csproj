@@ -199,6 +199,16 @@
     <None Include="database\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
+    <Resource Include="Fonts\gothampro.ttf" />
+    <Resource Include="Fonts\gothampro_black.ttf" />
+    <Resource Include="Fonts\gothampro_blackitalic.ttf" />
+    <Resource Include="Fonts\gothampro_bold.ttf" />
+    <Resource Include="Fonts\gothampro_bolditalic.ttf" />
+    <Resource Include="Fonts\gothampro_italic.ttf" />
+    <Resource Include="Fonts\gothampro_light.ttf" />
+    <Resource Include="Fonts\gothampro_lightitalic.ttf" />
+    <Resource Include="Fonts\gothampro_medium.ttf" />
+    <Resource Include="Fonts\gothampro_mediumitalic.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

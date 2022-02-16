@@ -116,6 +116,7 @@ namespace OrderingFood.pages
                     {
                         if (index < dishList.Count)
                         {
+                           // Viewbox viewBoxCellInGrid = new Viewbox();
                             Button button = new Button();
                             button.Content = prevDishList[index].Name + " Цена: " + prevDishList[index].Price;
                             button.Height = Double.NaN;
@@ -125,6 +126,8 @@ namespace OrderingFood.pages
                             button.Click += addToListDishHandler;
                             Grid.SetRow(button, j);
                             Grid.SetColumn(button, k);
+               /*             viewBoxCellInGrid.Height = Double.NaN;
+                            viewBoxCellInGrid.Child = button;*/
                             gridList[i].Children.Add(button);
                         }
                         index++;
@@ -206,10 +209,18 @@ namespace OrderingFood.pages
 
         private async void ButtonOrder_Click(object sender, RoutedEventArgs e)
         {
-            await apiOrderSendPosTask();
-            refreshListOrder();
-            dishListToOrder.Clear();
-            DishListAdded.Items.Clear();
+            if (dishListToOrder.Count > 0 && DishListAdded.Items.Count > 0)
+            {
+                await apiOrderSendPosTask();
+                refreshListOrder();
+                dishListToOrder.Clear();
+                DishListAdded.Items.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Добавьте позиций в корзину");
+            }
+
 
         }
 
