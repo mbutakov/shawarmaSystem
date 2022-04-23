@@ -234,13 +234,15 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="pages\dishEditor\potato.png" />
+    <Resource Include="pages\dishEditor\lavash.png" />
+    <Resource Include="pages\dishEditor\xalapeshka.png" />
+    <Resource Include="pages\dishEditor\chicken.png" />
+    <Resource Include="pages\dishEditor\white_sauce.png" />
+    <Resource Include="pages\dishEditor\red_sauce.png" />
     <Resource Include="pages\dishEditor\capusta.png" />
-    <Resource Include="pages\dishEditor\a.png" />
     <Resource Include="pages\dishEditor\tomato.png" />
-    <Content Include="pages\dishEditor\chicken.png" />
     <Resource Include="pages\dishEditor\cucumber.png" />
-    <Resource Include="pages\dishEditor\kisspng-plum-tomato-vegetable-bush-tomato-ketchup-5c81f5326fd890.4147801815520207864581.jpg" />
-    <Content Include="pages\dishEditor\tomatoes.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

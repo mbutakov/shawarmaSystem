@@ -32,10 +32,8 @@ namespace ShawarmaManager.pages.dishEditor
             Instance = this;
             InitializeComponent();
             dishEditorWindow.Visibility = Visibility.Collapsed;
-           // dishEditorWindow.WindowStyle = WindowStyle.None;
             dishEditorWindow.ResizeMode = ResizeMode.NoResize;
             dishEditorWindow.WindowState = WindowState.Maximized;
-           // dishEditorWindow.Topmost = true;
             dishEditorWindow.Visibility = Visibility.Visible;
             loadListIngridient();
         }
@@ -44,7 +42,6 @@ namespace ShawarmaManager.pages.dishEditor
         {
             gridIngridient.Children.Clear();
             listIngridientLoaded.Clear();
-            int ing = 0;
             using (fastfoodEntitiesContext db = new fastfoodEntitiesContext())
             {
                 foreach (Ingredient u in db.Ingredient)
@@ -52,8 +49,6 @@ namespace ShawarmaManager.pages.dishEditor
             }
             int column = 0;
             int row = 0;
-            int index = 0;
-            
             for (int i = 0; i < listIngridientLoaded.Count; i++)
             {
                 if (i % 3 == 0)
@@ -74,7 +69,7 @@ namespace ShawarmaManager.pages.dishEditor
                 StackPanel stackPanel = new StackPanel();
                 Button btn = new Button();
                 Image img = new Image();
-                img.Height = 100;
+                img.Height = 250;
                 img.Source = new BitmapImage(new Uri("/pages/dishEditor/" +listIngridientLoaded[i].Image + ".png", UriKind.Relative));
                 btn.Height = Double.NaN;
                 btn.Click += addToListIngridient;

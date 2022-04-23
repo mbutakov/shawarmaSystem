@@ -30,7 +30,7 @@ namespace OrderingFood.pages
         public static List<Dish> prevDishList = new List<Dish>();
         public static List<Grid> gridList = new List<Grid>();
         System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-        public static List<Tuple<Dish, int>> dishListToOrder = new List<Tuple<Dish, int>>();
+        public static List<Tuple<Dish, int,float>> dishListToOrder = new List<Tuple<Dish, int, float>>();
 
         public ItemPage()
         {
@@ -82,7 +82,6 @@ namespace OrderingFood.pages
                 }
             }
 
-            int r = 0;
             for (int i = 0; i < countGrids; i++)
             {
                 Grid grid = new Grid();
@@ -123,6 +122,7 @@ namespace OrderingFood.pages
                             button.SetValue(Grid.ColumnProperty, j);
                             button.SetValue(Grid.RowProperty, k);
                             button.Tag = prevDishList[index];
+                            button.DataContext = prevDishList[index].Price;
                             button.Click += addToListDishHandler;
                             Grid.SetRow(button, j);
                             Grid.SetColumn(button, k);
@@ -162,15 +162,16 @@ namespace OrderingFood.pages
         public void addToListDishHandler(object sender, EventArgs e)
         {
             Dish dish = (Dish)((Control)sender).Tag;
-            var item = new Tuple<Dish, int>(dish, 1);
+            var item = new Tuple<Dish, int,float>(dish, 1,dish.Price);
             int index = 0;
             bool find = false;
             foreach (var di in dishListToOrder)
             {
                 if (di.Item1.Name == item.Item1.Name)
                 {
-                    var newTuple = new Tuple<Dish, int>(item.Item1, di.Item2 + 1);
-                    newTuple.Item1.Price += 100;
+                    var newTuple = new Tuple<Dish, int, float>(item.Item1, di.Item2 + 1,item.Item1.Price);
+                    newTuple.Item1.Price += (float)((Control)sender).DataContext;
+                    
                     dishListToOrder.RemoveAt(index);
                     dishListToOrder.Insert(index, newTuple);
                     find = true;

@@ -10,7 +10,5 @@
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/model1.context.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/model1.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pages/disheditor/chicken.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pages/disheditor/tomatoes.png")]
 
 

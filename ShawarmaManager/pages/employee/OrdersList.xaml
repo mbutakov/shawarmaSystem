@@ -35,41 +35,5 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Grid.Row="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0.25*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="0.25*"/>
-            </Grid.RowDefinitions>
-            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                <!-- Задаете шаблон отображения -->
-                <ScrollViewer.Template>
-                    <ControlTemplate TargetType="{x:Type ScrollViewer}">
-                        <Grid>
-                            <ScrollContentPresenter />
-                            <!-- Это область куда помещаются элементы, что будут скролировать -->
-                            <!-- Вместо этого комментария можно поместить кнопку, если не нужно, чтобы она скролировалась -->
-                            <ScrollBar x:Name="PART_VerticalScrollBar" Value="{TemplateBinding VerticalOffset}" Maximum="{TemplateBinding ScrollableHeight}"
-                                       ViewportSize="{TemplateBinding ViewportHeight}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
-                                       HorizontalAlignment="Right" Style="{DynamicResource ResourceKey=ScrollBarStyle}" />
-                        </Grid>
-                    </ControlTemplate>
-                </ScrollViewer.Template>
-                <!-- А здесь помещаете все, что должно скролироваться -->
-                <Viewbox Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Stretch="None">
-                    <StackPanel HorizontalAlignment="Center" >
-                        <Label VerticalAlignment="Top" HorizontalAlignment="Left">asdasd</Label>
-                        <Label>asdasdggggggggggggggggggggggg</Label>
-                        <Label>asdasdgggggggggggggggggggggggdddd</Label>
-                        <Label>asdasd</Label>
-                        <Label>asdasd</Label>
-
-                    </StackPanel>
-                </Viewbox>
-            </ScrollViewer>
-
-
-
-        </Grid>
-</Grid>
+    </Grid>
 </Window>
