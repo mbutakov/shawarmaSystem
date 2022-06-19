@@ -43,6 +43,7 @@ namespace ShawarmaManager
             InitializeComponent();
             FrameMain.Navigate(lp);
             Closing += this.OnWindowClosing;
+            connection.Employee.SingleOrDefault(x => x.Name == " ");
         }
         public void OnWindowClosing(object sender, CancelEventArgs e)
         {

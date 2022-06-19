@@ -86,5 +86,13 @@ namespace ShawarmaManager.pages
         {
 
         }
+
+        private void loginBox_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+        }
+
+        private void loginBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+        }
     }
 }

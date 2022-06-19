@@ -5,8 +5,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShawarmaManager"
+        Background="{DynamicResource MaterialDesignBodyLight}"
         mc:Ignorable="d"
-        Title="Login Page" Height="500" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#FF811CEC">
+        Title="ShawarmaEmployee" Height="500" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <Frame NavigationUIVisibility="Hidden" Content="" x:Name="FrameMain"/>
     </Grid>

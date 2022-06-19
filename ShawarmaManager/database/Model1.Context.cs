@@ -32,10 +32,9 @@ namespace ShawarmaManager.database
         public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<Image> Image { get; set; }
         public virtual DbSet<Ingredient> Ingredient { get; set; }
-        public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderCompound> OrderCompound { get; set; }
         public virtual DbSet<OrderStatus> OrderStatus { get; set; }
         public virtual DbSet<Unit> Unit { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Order> Order { get; set; }
     }
 }

@@ -22,6 +22,5 @@ namespace ShawarmaManager.database
     
         public virtual Dish Dish1 { get; set; }
         public virtual DishStatus DishStatus { get; set; }
-        public virtual Order Order1 { get; set; }
     }
 }

@@ -69,7 +69,7 @@ namespace ShawarmaManager.pages.employee
                     listDishes.Add(item);
                 }
 
-                newList.Add(new Tuple<List<Tuple<Dish, int, int>>, string,DateTime>(listDishes, o.Status,o.Date));
+                newList.Add(new Tuple<List<Tuple<Dish, int, int>>, string,DateTime>(listDishes, o.Status, (DateTime)o.Date));
             }
 
             int index = 0;

@@ -66,14 +66,19 @@
     <Property Name="Unit" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="Image" Type="varchar" MaxLength="50" />
   </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "fastFood.dbo.Order" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
   <EntityType Name="Order">
     <Key>
       <PropertyRef Name="ID" />
+      <PropertyRef Name="Client" />
+      <PropertyRef Name="Employee" />
+      <PropertyRef Name="Status" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Client" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="Employee" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="Date" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="Date" Type="datetime" />
     <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="OrderCompound">
@@ -92,16 +97,6 @@
       <PropertyRef Name="Name" />
     </Key>
     <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Unit">
     <Key>
@@ -169,54 +164,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="Order_fk0">
-    <End Role="Client" Type="Self.Client" Multiplicity="1" />
-    <End Role="Order" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Client">
-        <PropertyRef Name="Phone" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="Client" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="Order_fk1">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-    <End Role="Order" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="Phone" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="Employee" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="Order_fk2">
-    <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="1" />
-    <End Role="Order" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="OrderStatus">
-        <PropertyRef Name="Name" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="Status" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="OrderCompound_fk0">
-    <End Role="Order" Type="Self.Order" Multiplicity="1" />
-    <End Role="OrderCompound" Type="Self.OrderCompound" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Order">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="OrderCompound">
-        <PropertyRef Name="Order" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="OrderCompound_fk1">
     <End Role="Dish" Type="Self.Dish" Multiplicity="1" />
     <End Role="OrderCompound" Type="Self.OrderCompound" Multiplicity="*" />
@@ -250,11 +197,18 @@
     <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Ingredient" EntityType="Self.Ingredient" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OrderCompound" EntityType="Self.OrderCompound" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Order].[ID] AS [ID], 
+    [Order].[Client] AS [Client], 
+    [Order].[Employee] AS [Employee], 
+    [Order].[Date] AS [Date], 
+    [Order].[Status] AS [Status]
+    FROM [dbo].[Order] AS [Order]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="DishCompound_fk0" Association="Self.DishCompound_fk0">
       <End Role="Dish" EntitySet="Dish" />
       <End Role="DishCompound" EntitySet="DishCompound" />
@@ -274,22 +228,6 @@
     <AssociationSet Name="Ingredient_fk0" Association="Self.Ingredient_fk0">
       <End Role="Unit" EntitySet="Unit" />
       <End Role="Ingredient" EntitySet="Ingredient" />
-    </AssociationSet>
-    <AssociationSet Name="Order_fk0" Association="Self.Order_fk0">
-      <End Role="Client" EntitySet="Client" />
-      <End Role="Order" EntitySet="Order" />
-    </AssociationSet>
-    <AssociationSet Name="Order_fk1" Association="Self.Order_fk1">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Order" EntitySet="Order" />
-    </AssociationSet>
-    <AssociationSet Name="Order_fk2" Association="Self.Order_fk2">
-      <End Role="OrderStatus" EntitySet="OrderStatus" />
-      <End Role="Order" EntitySet="Order" />
-    </AssociationSet>
-    <AssociationSet Name="OrderCompound_fk0" Association="Self.OrderCompound_fk0">
-      <End Role="Order" EntitySet="Order" />
-      <End Role="OrderCompound" EntitySet="OrderCompound" />
     </AssociationSet>
     <AssociationSet Name="OrderCompound_fk1" Association="Self.OrderCompound_fk1">
       <End Role="Dish" EntitySet="Dish" />

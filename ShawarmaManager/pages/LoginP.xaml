@@ -13,7 +13,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <PasswordBox HorizontalAlignment ="Center" Margin="0,0,0,220" Width="130" x:Name="passBox" Height="30" VerticalAlignment="Bottom"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,0,0,278" TextWrapping="Wrap" Text="Login" Width="130" x:Name="loginBox" TextChanged="loginBox_TextChanged" Height="30" VerticalAlignment="Bottom"/>
-        <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}" Content="Auth" HorizontalAlignment="Center" Margin="0,0,0,171" Width="100" Click="Button_Click_1" Cursor="Hand" Height="32" VerticalAlignment="Bottom"/>
+        <TextBox  HorizontalAlignment="Center" Margin="0,0,0,278" TextWrapping="Wrap" Text="Логин" Width="130" x:Name="loginBox" TextChanged="loginBox_TextChanged" Height="30" VerticalAlignment="Bottom" Cursor="IBeam"/>
+        <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}" Content="Войти" HorizontalAlignment="Center" Margin="0,0,0,171" Width="100" Click="Button_Click_1" Cursor="Hand" Height="32" VerticalAlignment="Bottom"/>
     </Grid>
 </Page>
